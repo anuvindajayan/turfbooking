@@ -49,7 +49,7 @@ class Turf_Home2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
+      body: ListView(physics: ScrollPhysics(), shrinkWrap: true, children: [
         Stack(
           children: [
             Container(
@@ -62,14 +62,13 @@ class Turf_Home2 extends StatelessWidget {
                   Row(
                     children: List.generate(
                       4,
-                          (index) =>
-                          Container(
-                            child: Image.asset(
-                              images[index],
-                              fit: BoxFit.fill,
-                            ),
-                            decoration: BoxDecoration(),
-                          ),
+                      (index) => Container(
+                        child: Image.asset(
+                          images[index],
+                          fit: BoxFit.fill,
+                        ),
+                        decoration: BoxDecoration(),
+                      ),
                     ),
                   ),
                 ]),
@@ -94,10 +93,12 @@ class Turf_Home2 extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF388E3C)),
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    onPressed: () {}, icon: Icon(CupertinoIcons.location_solid)),
+                    onPressed: () {},
+                    icon: Icon(CupertinoIcons.location_solid)),
                 Text("Kakkanad,Ernakulam,Kerala"),
               ],
             ),
@@ -126,8 +127,7 @@ class Turf_Home2 extends StatelessWidget {
           child: Row(
             children: List.generate(
                 4,
-                    (index) =>
-                    Padding(
+                (index) => Padding(
                       padding: const EdgeInsets.all(12),
                       child: Container(
                         decoration: BoxDecoration(
@@ -148,7 +148,7 @@ class Turf_Home2 extends StatelessWidget {
         ),
         Padding(
           padding:
-          const EdgeInsets.only(top: 20.0, left: 15, right: 15, bottom: 20),
+              const EdgeInsets.only(top: 20.0, left: 15, right: 15, bottom: 20),
           child: Container(
             decoration: BoxDecoration(),
             child: ClipRRect(
@@ -158,7 +158,7 @@ class Turf_Home2 extends StatelessWidget {
                 fit: BoxFit.fill,
               ),
             ),
-            height: 150,
+            height: 200,
             width: double.infinity,
           ),
         ),
@@ -199,7 +199,7 @@ class Turf_Home2 extends StatelessWidget {
           color: Colors.green,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: const EdgeInsets.only(left:20.0),
           child: Text(
             "LIVE\nTO PLAY",
             style: GoogleFonts.oswald(

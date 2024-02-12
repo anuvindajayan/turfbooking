@@ -1,40 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:turfbooking/booking_details.dart';
-import 'package:turfbooking/events_details.dart';
-import 'package:turfbooking/turfbookingapp/home_turf/turf_home2.dart';
-import 'package:turfbooking/turf_shopings.dart';
-import 'package:turfbooking/turf_profile.dart';
+import 'package:provider/provider.dart';
+import 'package:turfbooking/controller/bottom_nav_controller.dart';
 
-class Turf_main extends StatefulWidget {
-  const Turf_main({super.key});
-
-  @override
-  State<Turf_main> createState() => _Turf_mainState();
-}
-
-class _Turf_mainState extends State<Turf_main> {
-  int index = 0;
-  var screen = [
-    Turf_Home2(),
-    Turf_Events(),
-    Turf_Booking_Details(),
-    Turf_Shoppings(),
-    Turf_profile()
-  ];
-
+class Bottom_Nav_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Provider.of<Bottom_NavigationController>(context).myscreen[
+          Provider.of<Bottom_NavigationController>(context).selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.black,
-          onTap: (tapindex) {
-            setState(() {
-              index = tapindex;
-            });
-          },
-          currentIndex: index,
           selectedItemColor: Colors.green,
+          unselectedItemColor: Colors.black,
+          onTap: (index) =>
+              Provider.of<Bottom_NavigationController>(context, listen: false)
+                  .OnTap(index),
+          currentIndex: Provider.of<Bottom_NavigationController>(
+            context,
+          ).selectedIndex,
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.sports_soccer), label: "home"),
@@ -47,7 +30,6 @@ class _Turf_mainState extends State<Turf_main> {
             BottomNavigationBarItem(
                 icon: Icon(CupertinoIcons.profile_circled), label: "Profile"),
           ]),
-      body: screen[index],
     );
   }
 }

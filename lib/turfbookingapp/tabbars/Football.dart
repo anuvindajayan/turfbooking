@@ -1,5 +1,5 @@
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:turfbooking/turfbookingapp/turf_peyment.dart';
 
 void main() {
@@ -8,102 +8,154 @@ void main() {
   ));
 }
 
-class Turf_Football extends StatelessWidget {
+class Turf_Football extends StatefulWidget {
+  @override
+  State<Turf_Football> createState() => _Turf_FootballState();
+}
+
+class _Turf_FootballState extends State<Turf_Football> {
+  var selectedDate;
+  var selectedIndex = -1;
+  var times = [
+    "5:00 AM",
+    "6:00 AM",
+    "7:00 AM",
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+    "8:00 PM",
+    "9:00 PM",
+    "10:00 PM",
+    "11:00 PM",
+    "12:00 PM"
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-        ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          Container(
-            height: 150,
-            width: double.infinity,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                    31,
-                    (index) => Padding(
-                          padding: const EdgeInsets.only(top: 40.0, left: 10),
-                          child: Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.black, width: 3),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white,
-                              ),
-                              height: 80,
-                              width: 60,
-                              child: Column(
-                                children: [
-                                  Text("Month"),
-                                  Text(
-                                    "$index",
-                                    style: TextStyle(
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              )),
-                        )),
-              ),
-            ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 20,
           ),
           Text(
-            "Select Time",
-            style: TextStyle(fontSize: 30),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              decoration: BoxDecoration(border: Border.all(width: 3)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30.0),
-            child: Row(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  width: 150,
-                  height: 60,
-                  color: Colors.green,
-                  child: Text(
-                    "950/hour",
-                    style: TextStyle(color: Colors.white, fontSize: 30),
-                  ),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Container(
-                  width: 150,
-                  height: 60,
-                  color: Colors.green,
-                  child: Text(""),
-                ),
-              ],
-            ),
+            "Select Your Date",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.green),
           ),
           SizedBox(
             height: 20,
           ),
-          MaterialButton(
-            minWidth: 300,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Turf_Peyments()));
+          DatePicker(
+            height: 100,
+            width: 100,
+            dateTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            monthTextStyle:
+                TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            DateTime.now(),
+            initialSelectedDate: DateTime.now(),
+            selectionColor: Colors.green,
+            selectedTextColor: Colors.white,
+            onDateChange: (date) {
+              // New date selected
+              setState(() {
+                selectedDate = date;
+              });
             },
-            child: Text(
-              "Book Now",
-              style: GoogleFonts.oswald(fontSize: 35, color: Colors.white),
-            ),
+          ),
+          Divider(
+            height: 80,
+            thickness: 1,
             color: Colors.green,
-          )
-        ]));
+          ),
+          Text(
+            "Select Your Slot",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.green),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+          Container(
+            height: 70,
+            child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 16,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green),
+                          borderRadius: BorderRadius.circular(10),
+                          color: selectedIndex == index
+                              ? Colors.green
+                              : Colors.white),
+                      child: Text(
+                        times[index],
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  );
+                }),
+          ),SizedBox(height: 30,),
+          Divider(
+            height: 50,
+            thickness: 1,
+            color: Colors.green,
+          ),
+          Container(
+            height: 55,
+            width: 400,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  selectedIndex < 9? "₹ 1000/hr" : "₹ 1200/hr",
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold),
+                ),
+                MaterialButton(height: 70,
+
+                  color: Colors.green,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Turf_Peyments()));
+                  },
+                  child: Text(
+                    "  Next  ",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        letterSpacing: 2),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(color: Colors.grey,height: 50,thickness: 0.3,)
+        ],
+      ),
+    );
   }
 }

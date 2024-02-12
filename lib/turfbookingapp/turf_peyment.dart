@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -8,9 +10,14 @@ void main() {
 }
 
 class Turf_Peyments extends StatelessWidget {
-  var peyment=["Credit card",
-  "Debitcard",
-  "Upi","Mobile banking"];
+  var peyment = ["Credit card", "Debitcard", "Upi", "Mobile banking"];
+  var peyicon = [
+    FontAwesomeIcons.creditCard,
+    FontAwesomeIcons.creditCard,
+    FontAwesomeIcons.googlePay,
+    FontAwesomeIcons.mobile
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +53,8 @@ class Turf_Peyments extends StatelessWidget {
                     Text(
                       "Turf Time   :                ",
                       style: TextStyle(fontSize: 20),
-                    ),Text(
+                    ),
+                    Text(
                       "Date               :            ",
                       style: TextStyle(fontSize: 20),
                     ),
@@ -66,10 +74,7 @@ class Turf_Peyments extends StatelessWidget {
                       "Cgst         :                 ",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Divider(
-                      thickness: 1.5,
-                      height: 45
-                    ),
+                    Divider(thickness: 1.5, height: 45),
                     Text(
                       "Total Amount                        2,000",
                       style:
@@ -87,11 +92,11 @@ class Turf_Peyments extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: List.generate(
                     4,
-                    (index) => ListTile(leading: Icon(Icons.phone_android),
-                    title: Text(peyment[index]),),
-
+                    (index) => ListTile(
+                      leading: FaIcon(peyicon[index]),
+                      title: Text(peyment[index]),
+                    ),
                   )),
-
             ],
           )),
     );

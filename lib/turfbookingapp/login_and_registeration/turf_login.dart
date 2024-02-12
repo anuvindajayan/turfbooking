@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:turfbooking/turfbookingapp/login_and_registeration/turf_register.dart';
+import 'package:turfbooking/view/bottom_nav_screen.dart';
 
-import '../turf_main/turf_main.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -25,7 +26,10 @@ class _Log_turfState extends State<Log_turf> {
       body: Stack(children: [
         Container(
           padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom + 50),
+              bottom: MediaQuery
+                  .of(context)
+                  .viewInsets
+                  .bottom + 50),
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -106,7 +110,7 @@ class _Log_turfState extends State<Log_turf> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Turf_main()));
+                                  builder: (context) => Bottom_Nav_Screen()));
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20.0),
@@ -146,13 +150,13 @@ class _Log_turfState extends State<Log_turf> {
                               text: TextSpan(
                                   style: TextStyle(color: Colors.black),
                                   children: [
-                                TextSpan(text: "Don't have an account?"),
-                                TextSpan(
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                    text: " SIGN UP")
-                              ])))
+                                    TextSpan(text: "Don't have an account?"),
+                                    TextSpan(
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                        text: " SIGN UP")
+                                  ])))
                     ],
                   ),
                 ],

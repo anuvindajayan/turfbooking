@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:turfbooking/turfbookingapp/login_and_registeration/turf_login.dart';
@@ -28,10 +27,15 @@ class _Turf_SplashState extends State<Turf_Splash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(alignment: Alignment.center,
+        body: Container(
+      alignment: Alignment.center,
       width: double.infinity,
       height: double.infinity,
-      child: Image.asset("assets/splash/kickofflogo.png",width: 150,height: 150,),
+      child: Image.asset(
+        "assets/splash/kickofflogo.png",
+        width: 150,
+        height: 150,
+      ),
       color: Colors.white,
     ));
   }

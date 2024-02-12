@@ -70,17 +70,11 @@ class Turf_Shoppings extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text("Price:  799/ "),
-                      Text(
-                        "Book Now",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
-                            backgroundColor: Colors.green),
-                      ),
+
                     ],
                   ),
                 ]),

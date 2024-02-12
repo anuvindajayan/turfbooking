@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:turfbooking/my_profile.dart';
+import 'package:turfbooking/view/turf_profile/my_profile.dart';
+import '../events_details.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,7 +12,6 @@ void main() {
 class Turf_profile extends StatelessWidget {
   var titles = [
     "My Profile",
-    "Help and Support",
     "Cancellation",
     "Booking History",
     "FAQ",
@@ -22,10 +21,6 @@ class Turf_profile extends StatelessWidget {
   var icons = [
     Icon(
       CupertinoIcons.profile_circled,
-      color: Colors.white,
-    ),
-    Icon(
-      CupertinoIcons.headphones,
       color: Colors.white,
     ),
     Icon(
@@ -48,6 +43,14 @@ class Turf_profile extends StatelessWidget {
       CupertinoIcons.star_circle_fill,
       color: Colors.white,
     ),
+  ];
+  var pages = [
+    My_profile(),
+    Turf_Events(),
+    Turf_Events(),
+    Turf_Events(),
+    Turf_Events(),
+    Turf_Events(),
   ];
 
   @override
@@ -82,7 +85,7 @@ class Turf_profile extends StatelessWidget {
           ),
           Column(
             children: List.generate(
-                7,
+                6,
                 (index) => Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListTile(
@@ -90,7 +93,7 @@ class Turf_profile extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => My_profile()));
+                                  builder: (context) => pages[index]));
                         },
                         title: Text(
                           titles[index],

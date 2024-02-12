@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:turfbooking/turfbookingapp/home_turf/turf_home2.dart';
+
 import 'package:turfbooking/turfbookingapp/tabbars/Football.dart';
+import 'package:turfbooking/view/turf_home2.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,8 +19,7 @@ class Booking_now extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          bottom: TabBar(
-          tabs: [
+          bottom: TabBar(indicatorColor: Colors.green, tabs: [
             Container(
               decoration: BoxDecoration(
                   color: Colors.green, borderRadius: BorderRadius.circular(10)),
