@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:turfbooking/turfbookingapp/widget_refractor/logo_refractor.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: Turf_Booking_Details(),
-  ));
-}
+import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
 
 class Turf_Booking_Details extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(automaticallyImplyLeading: false,
         title: Text(
           "Booking Details",
           style: TextStyle(

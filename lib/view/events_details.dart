@@ -1,5 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,7 +13,7 @@ class Turf_Events extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Text(
           "Events",
@@ -21,10 +21,27 @@ class Turf_Events extends StatelessWidget {
               fontSize: 30, fontWeight: FontWeight.bold, color: Colors.green),
         ),
       ),
-      body: ListView(
-        children:[ Column(
+      body: ListView(children: [
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            CarouselSlider(
+                disableGesture: true,
+                items: List.generate(
+                    4,
+                    (index) => Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            color: Colors.black,
+                          ),
+                        )),
+                options: CarouselOptions(
+                    autoPlay: true,
+                    disableCenter: true,
+                    pauseAutoPlayInFiniteScroll: true,
+                    pauseAutoPlayOnManualNavigate: true,
+                    height: 200,
+                    scrollDirection: Axis.horizontal)),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(
@@ -66,16 +83,16 @@ class Turf_Events extends StatelessWidget {
               child: Row(
                   children: List.generate(
                       5,
-                          (index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 250,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.blue),
-                        ),
-                      ))),
+                      (index) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 250,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.blue),
+                            ),
+                          ))),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -92,16 +109,16 @@ class Turf_Events extends StatelessWidget {
               child: Row(
                   children: List.generate(
                       5,
-                          (index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 250,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.red),
-                        ),
-                      ))),
+                      (index) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 250,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.red),
+                            ),
+                          ))),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -118,20 +135,20 @@ class Turf_Events extends StatelessWidget {
               child: Row(
                   children: List.generate(
                       5,
-                          (index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 250,
-                          width: 250,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.yellow),
-                        ),
-                      ))),
+                      (index) => Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 250,
+                              width: 250,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.yellow),
+                            ),
+                          ))),
             )
           ],
-        ),]
-      ),
+        ),
+      ]),
     );
   }
 }

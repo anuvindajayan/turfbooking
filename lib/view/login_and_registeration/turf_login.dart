@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:turfbooking/turfbookingapp/login_and_registeration/turf_register.dart';
+import 'package:provider/provider.dart';
+import 'package:turfbooking/controller/password_visible.dart';
 import 'package:turfbooking/view/bottom_nav_screen.dart';
-
-
-
-void main() {
-  runApp(MaterialApp(
-    home: Log_turf(),
-  ));
-}
-
+import 'package:turfbooking/view/login_and_registeration/turf_register.dart';
+import '../../modal/firebase_auth_function.dart';
 class Log_turf extends StatefulWidget {
   @override
   State<Log_turf> createState() => _Log_turfState();
 }
-
 class _Log_turfState extends State<Log_turf> {
-  bool showpassword = true;
+  var email_controller = TextEditingController();
+  var pass_controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +19,7 @@ class _Log_turfState extends State<Log_turf> {
       body: Stack(children: [
         Container(
           padding: EdgeInsets.only(
-              bottom: MediaQuery
-                  .of(context)
-                  .viewInsets
-                  .bottom + 50),
+              bottom: MediaQuery.of(context).viewInsets.bottom + 50),
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -45,7 +35,7 @@ class _Log_turfState extends State<Log_turf> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 200),
+          padding: const EdgeInsets.only(top: 170),
           child: Container(
             decoration: BoxDecoration(
                 color: Color(0xFFFFFFFF),
@@ -64,6 +54,7 @@ class _Log_turfState extends State<Log_turf> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TextFormField(
+                        controller:email_controller,
                         decoration: InputDecoration(
                             label: Text(
                               "Email",
@@ -79,38 +70,45 @@ class _Log_turfState extends State<Log_turf> {
                       SizedBox(
                         height: 25,
                       ),
-                      TextFormField(
-                        obscureText: showpassword,
-                        decoration: InputDecoration(
-                            label: Text(
-                              "Password",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF388E3C)),
-                            ),
-                            suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    if (showpassword == true) {
-                                      showpassword = false;
-                                    } else {
-                                      showpassword = true;
-                                    }
-                                  });
-                                },
-                                icon: Icon(showpassword == true
-                                    ? Icons.visibility_off
-                                    : Icons.visibility))),
-                      ),
+                      Consumer<PasswordVisibleController>(
+                          builder: (context, PasswordVisibleController, child) {
+                        return TextFormField(
+                          controller: pass_controller,
+                          obscureText: PasswordVisibleController.visible,
+                          decoration: InputDecoration(
+                              label: Text(
+                                "Password",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF388E3C)),
+                              ),
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    PasswordVisibleController.TapVisible();
+                                  },
+                                  icon: Icon(PasswordVisibleController.visible
+                                      ? Icons.visibility_off_sharp
+                                      : Icons.visibility))),
+                        );
+                      }),
                       SizedBox(
                         height: 30,
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Bottom_Nav_Screen()));
+                           String email = email_controller.text.trim();
+                           String pass = pass_controller.text.trim();
+
+                            FireBaseHelper()
+                                .loginUser(email1: email, pwd: pass)
+                                .then((result) {if (result == null) {
+                               Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => Bottom_Nav_Screen()));
+                             } else {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                    backgroundColor: Colors.red, content: Text(result)));
+                              }
+                           });
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20.0),
@@ -150,13 +148,13 @@ class _Log_turfState extends State<Log_turf> {
                               text: TextSpan(
                                   style: TextStyle(color: Colors.black),
                                   children: [
-                                    TextSpan(text: "Don't have an account?"),
-                                    TextSpan(
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                        text: " SIGN UP")
-                                  ])))
+                                TextSpan(text: "Don't have an account?"),
+                                TextSpan(
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                    text: " SIGN UP")
+                              ])))
                     ],
                   ),
                 ],

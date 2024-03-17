@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:turfbooking/book_now.dart';
+import 'package:turfbooking/view/book_now.dart';
+import 'package:turfbooking/view/widget_refractor/Text_filed/circle_avtr.dart';
+import 'package:turfbooking/view/widget_refractor/facilities.dart';
+import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
 
-import 'package:turfbooking/turfbookingapp/widget_refractor/Text_filed/circle_avtr.dart';
-import 'package:turfbooking/turfbookingapp/widget_refractor/facilities.dart';
-import 'package:turfbooking/turfbookingapp/widget_refractor/logo_refractor.dart';
+
 
 void main() {
   runApp(MaterialApp(
@@ -170,7 +171,7 @@ class Turf_Home2 extends StatelessWidget {
             color: Colors.green,
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Booking_now()));
+                  MaterialPageRoute(builder: (context) => BookingNow()));
             },
             child: Text(
               "Book Now",
@@ -199,7 +200,7 @@ class Turf_Home2 extends StatelessWidget {
           color: Colors.green,
         ),
         Padding(
-          padding: const EdgeInsets.only(left:20.0),
+          padding: const EdgeInsets.only(left: 20.0),
           child: Text(
             "LIVE\nTO PLAY",
             style: GoogleFonts.oswald(

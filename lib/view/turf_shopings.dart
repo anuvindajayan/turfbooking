@@ -2,11 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Turf_Shoppings(),
-  ));
-}
 
 class Turf_Shoppings extends StatelessWidget {
   var images = [
@@ -41,7 +36,7 @@ class Turf_Shoppings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Pre book Now",style: GoogleFonts.oswald(color: Colors.green),),
+      appBar: AppBar(automaticallyImplyLeading: false,title: Text("Pre book Now",style: GoogleFonts.oswald(color: Colors.green),),
         actions: [
           IconButton(
               onPressed: () {}, icon: Icon(CupertinoIcons.cart_badge_plus))

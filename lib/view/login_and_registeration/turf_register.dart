@@ -1,13 +1,11 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:turfbooking/turfbookingapp/login_and_registeration/turf_login.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: Turf_register(),
-  ));
-}
+import 'package:provider/provider.dart';
+import 'package:turfbooking/controller/password_visible.dart';
+import 'package:turfbooking/view/login_and_registeration/turf_login.dart';
+import '../../modal/firebase_auth_function.dart';
 
 class Turf_register extends StatefulWidget {
   @override
@@ -15,14 +13,27 @@ class Turf_register extends StatefulWidget {
 }
 
 class _Turf_registerState extends State<Turf_register> {
-  bool showpass = true;
-  bool showpassword = true;
   var formkey = GlobalKey<FormState>();
 
+  var name_controller = TextEditingController();
+
+  var email_controller = TextEditingController();
+
+  var phone_controller = TextEditingController();
+
+  var pass_controller = TextEditingController();
+
+  late CollectionReference _userCollection;
+@override
+  void initState() {
+    _userCollection =FirebaseFirestore.instance.collection("users");
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
+    PasswordVisibleController provider = Provider.of<PasswordVisibleController>(
+        context);
     return Scaffold(
-
       body: Stack(children: [
         Container(
           height: double.infinity,
@@ -55,14 +66,17 @@ class _Turf_registerState extends State<Turf_register> {
               width: double.infinity,
               child: Padding(
                 padding:
-                    const EdgeInsets.only(top: 35, left: 18.0, right: 18.0),
+                const EdgeInsets.only(top: 35, left: 18.0, right: 18.0),
                 child: SingleChildScrollView(
                   padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom),
+                      bottom: MediaQuery
+                          .of(context)
+                          .viewInsets
+                          .bottom),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextFormField(
+                      TextFormField(controller: name_controller,
                         decoration: InputDecoration(
                             label: Text(
                               "Full Name",
@@ -74,7 +88,7 @@ class _Turf_registerState extends State<Turf_register> {
                               Icons.person,
                             )),
                       ),
-                      TextFormField(
+                      TextFormField(controller: email_controller,
                         decoration: InputDecoration(
                             label: Text(
                               "Email",
@@ -86,8 +100,7 @@ class _Turf_registerState extends State<Turf_register> {
                               Icons.email_outlined,
                             )),
                       ),
-                      TextFormField(
-                        initialValue: "+91 ",
+                      TextFormField(controller: phone_controller,
                         decoration: InputDecoration(
                             label: Text(
                               "Phone Number",
@@ -99,8 +112,8 @@ class _Turf_registerState extends State<Turf_register> {
                               Icons.phone,
                             )),
                       ),
-                      TextFormField(
-                          obscureText: showpass,
+                      TextFormField(controller: pass_controller,
+                          obscureText: provider.visible2,
                           decoration: InputDecoration(
                               label: Text(
                                 "Password",
@@ -110,19 +123,13 @@ class _Turf_registerState extends State<Turf_register> {
                               ),
                               suffixIcon: IconButton(
                                   onPressed: () {
-                                    setState(() {
-                                      if (showpass == true) {
-                                        showpass = false;
-                                      } else {
-                                        showpass = true;
-                                      }
-                                    });
+                                    provider.TapVisible2();
                                   },
-                                  icon: Icon(showpass == true
+                                  icon: Icon(provider.visible2 == true
                                       ? Icons.visibility_off_sharp
                                       : Icons.visibility)))),
                       TextFormField(
-                          obscureText: showpassword,
+                          obscureText: provider.visible3,
                           decoration: InputDecoration(
                               label: Text(
                                 "Confirm Password",
@@ -132,15 +139,9 @@ class _Turf_registerState extends State<Turf_register> {
                               ),
                               suffixIcon: IconButton(
                                   onPressed: () {
-                                    setState(() {
-                                      if (showpassword == true) {
-                                        showpassword = false;
-                                      } else {
-                                        showpassword = true;
-                                      }
-                                    });
+                                    provider.TapVisible3();
                                   },
-                                  icon: Icon(showpassword == true
+                                  icon: Icon(provider.visible3
                                       ? Icons.visibility_off_sharp
                                       : Icons.visibility)))),
                       SizedBox(
@@ -148,10 +149,23 @@ class _Turf_registerState extends State<Turf_register> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Log_turf()));
+                           registeruser();
+                          String email = email_controller.text.trim();
+                          String pass = pass_controller.text.trim();
+
+                          FireBaseHelper()
+                              .registerUser(email: email, pwd: pass)
+                              .then((result) {
+                            if (result == null) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Log_turf()));
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(content: Text(result)));
+                            }
+                          });
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20.0),
@@ -191,14 +205,14 @@ class _Turf_registerState extends State<Turf_register> {
                               text: TextSpan(
                                   style: TextStyle(color: Colors.black),
                                   children: [
-                                TextSpan(
-                                    text: "If you already have an account?"),
-                                TextSpan(
-                                    style: GoogleFonts.robotoMono(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                    text: " LOGIN")
-                              ])))
+                                    TextSpan(
+                                        text: "If you already have an account?"),
+                                    TextSpan(
+                                        style: GoogleFonts.robotoMono(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                        text: " LOGIN")
+                                  ])))
                     ],
                   ),
                 ),
@@ -209,4 +223,17 @@ class _Turf_registerState extends State<Turf_register> {
       ]),
     );
   }
-}
+
+  Future <void> registeruser() async {
+    return _userCollection.add(
+        {
+          "name": name_controller.text,
+          "email": email_controller.text,
+          "phone": phone_controller.text
+        }).then((value) {
+      print("user add successsfuly");
+    }).catchError((error) {
+      print("failed to add user $error");
+    });
+  }
+ }
