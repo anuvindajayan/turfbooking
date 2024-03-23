@@ -1,15 +1,13 @@
+import 'dart:io';
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Turf_Events(),
-  ));
-}
+
 
 class Turf_Events extends StatelessWidget {
-  const Turf_Events({super.key});
-
+   late final List<File> images;
+Turf_Events();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,22 +24,23 @@ class Turf_Events extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CarouselSlider(
-                disableGesture: true,
-                items: List.generate(
-                    4,
-                    (index) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            color: Colors.black,
-                          ),
-                        )),
-                options: CarouselOptions(
-                    autoPlay: true,
-                    disableCenter: true,
-                    pauseAutoPlayInFiniteScroll: true,
-                    pauseAutoPlayOnManualNavigate: true,
-                    height: 200,
-                    scrollDirection: Axis.horizontal)),
+          items: images?.map((image) {
+            return Container(
+              child: Center(
+                child: Image.file(image))
+
+            );
+          }).toList(),
+          options: CarouselOptions(
+            height: 400,
+            enlargeCenterPage: true,
+            autoPlay: true,
+            enableInfiniteScroll: true,
+            autoPlayInterval: Duration(seconds: 3),
+            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(

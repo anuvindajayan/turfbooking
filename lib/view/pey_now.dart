@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:turfbooking/modal/select_time_date.dart';
 import 'package:turfbooking/view/bottom_nav_screen.dart';
-import 'package:turfbooking/view/tabbars/Football.dart';
+
 import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
 import '../controller/peyment_controller.dart';
 

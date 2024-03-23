@@ -51,6 +51,9 @@ dependencies:
   firebase_auth: ^4.17.4
   firebase_core: ^2.25.4
   lottie: ^2.7.0
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
+
 
 
 dev_dependencies:
