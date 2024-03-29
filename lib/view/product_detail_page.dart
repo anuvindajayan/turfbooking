@@ -213,52 +213,127 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
               SizedBox(height: 20),
-              DropdownButton<String>(
-                value: selectedSize,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedSize = newValue!;
-                  });
-                },
-                items: <String>['S', 'M', 'L', 'XL']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  );
-                }).toList(),
-              ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
+            border: Border.all(
+              color: Colors.grey[400]!, // Specify border color
+              width: 1, // Specify border width
+            ),
+          ),
+          child: DropdownButton<String>(
+            value: selectedSize,
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                setState(() {
+                  selectedSize = newValue;
+                });
+              }
+            },
+            items: <String>['S', 'M', 'L', 'XL']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+                  child: Text(
+                    value,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              );
+            }).toList(),
+            isExpanded: true, // Makes the dropdown button expand to fill the available space
+            underline: Container(), // Removes the default underline
+            icon: Icon(Icons.arrow_drop_down), // Adds an icon next to the dropdown
+            iconSize: 30, // Adjust icon size as needed
+            iconEnabledColor: Colors.black, // Change icon color as needed
+            elevation: 16, // Dropdown elevation
+            style: TextStyle(fontSize: 18, color: Colors.black), // Dropdown text style
+          ),
+        ),
+
               SizedBox(height: 20),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     IconButton(
+              //       onPressed: () {
+              //         setState(() {
+              //           if (quantity > 0) {
+              //             quantity--;
+              //           }
+              //         });
+              //       },
+              //       icon: Icon(Icons.remove),
+              //     ),
+              //     Text(
+              //       '$quantity',
+              //       style: TextStyle(fontSize: 20),
+              //     ),
+              //     IconButton(
+              //       onPressed: () {
+              //         setState(() {
+              //           quantity++;
+              //         });
+              //       },
+              //       icon: Icon(Icons.add),
+              //     ),
+              //   ],
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  IconButton(
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       setState(() {
                         if (quantity > 0) {
                           quantity--;
                         }
                       });
                     },
-                    icon: Icon(Icons.remove),
+                    borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey[200], // Customize the background color
+                      ),
+                      child: Icon(
+                        Icons.remove,
+                        color: Colors.black, // Customize the icon color
+                      ),
+                    ),
                   ),
+                  SizedBox(width: 16), // Add space between the buttons and the text
                   Text(
                     '$quantity',
                     style: TextStyle(fontSize: 20),
                   ),
-                  IconButton(
-                    onPressed: () {
+                  SizedBox(width: 16), // Add space between the buttons and the text
+                  InkWell(
+                    onTap: () {
                       setState(() {
                         quantity++;
                       });
                     },
-                    icon: Icon(Icons.add),
+                    borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey[200], // Customize the background color
+                      ),
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.black, // Customize the icon color
+                      ),
+                    ),
                   ),
                 ],
               ),
+
               SizedBox(height: 20),
               // ElevatedButton(
               //   onPressed: () {
@@ -279,7 +354,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               //   child: Text('Add to Cart'),
               // ),
               MaterialButton(
-                shape: ContinuousRectangleBorder(),
+                shape: StadiumBorder(),
                 height: 60,
                 color: Colors.green,
                 onPressed: () {

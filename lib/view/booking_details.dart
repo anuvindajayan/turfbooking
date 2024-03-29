@@ -398,7 +398,7 @@ class TurfBookingDetails extends StatelessWidget {
           if (snapshot.hasData) {
             Map<String, dynamic> bookingDetails = snapshot.data!;
             return Scaffold(
-              appBar: AppBar(
+              appBar: AppBar(automaticallyImplyLeading: false,
                 title: Text("Booking Details"),
               ),
               body: Padding(
