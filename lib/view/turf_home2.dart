@@ -6,13 +6,7 @@ import 'package:turfbooking/view/widget_refractor/Text_filed/circle_avtr.dart';
 import 'package:turfbooking/view/widget_refractor/facilities.dart';
 import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
 
-
-
-void main() {
-  runApp(MaterialApp(
-    home: Turf_Home2(),
-  ));
-}
+import 'mapscreen.dart';
 
 class Turf_Home2 extends StatelessWidget {
   var images = [
@@ -98,7 +92,11 @@ class Turf_Home2 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MapScreen()));
+                    },
                     icon: Icon(CupertinoIcons.location_solid)),
                 Text("Kakkanad,Ernakulam,Kerala"),
               ],

@@ -16,8 +16,9 @@ class Bottom_NavigationController extends ChangeNotifier {
   List<Widget> myscreen = [
     Turf_Home2(),
     Turf_Events(),
-    Turf_Booking_Details(),
+    TurfBookingDetails(),
     Turf_Shoppings(),
     Turf_profile()
   ];
 }
+

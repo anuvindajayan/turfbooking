@@ -227,17 +227,17 @@ class Turf_profile extends StatelessWidget {
                       Icons.person,
                       size: 150,
                     ),
-                    Text(
-                      "Anuvind",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Text(
-                      "anuvind@gmail.com",
-                      style: TextStyle(fontSize: 20),
-                    )
+                    // Text(
+                    //   "Anuvind",
+                    //   style: TextStyle(fontSize: 20),
+                    // ),
+                    // Text(
+                    //   "anuvind@gmail.com",
+                    //   style: TextStyle(fontSize: 20),
+                    // )
                   ],
                 ),
-                height: 400,
+                height: 300,
                 width: double.infinity,
               ),
               SizedBox(

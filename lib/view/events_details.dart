@@ -1,17 +1,18 @@
 import 'dart:io';
-import 'package:carousel_slider/carousel_options.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-
-
 class Turf_Events extends StatelessWidget {
-   late final List<File> images;
-Turf_Events();
+  late final List<File> images;
+
+  Turf_Events();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Text(
           "Events",
@@ -23,24 +24,6 @@ Turf_Events();
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CarouselSlider(
-          items: images?.map((image) {
-            return Container(
-              child: Center(
-                child: Image.file(image))
-
-            );
-          }).toList(),
-          options: CarouselOptions(
-            height: 400,
-            enlargeCenterPage: true,
-            autoPlay: true,
-            enableInfiniteScroll: true,
-            autoPlayInterval: Duration(seconds: 3),
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
-            scrollDirection: Axis.horizontal,
-          ),
-        ),
             Padding(
               padding: const EdgeInsets.only(left: 8.0),
               child: Text(

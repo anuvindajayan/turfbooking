@@ -53,7 +53,9 @@ dependencies:
   lottie: ^2.7.0
   image_picker: ^1.0.7
   path_provider: ^2.1.2
-  firebase_ui_firestore:
+  shared_preferences: ^2.2.2
+  share: ^2.0.4
+  flutter_map: ^6.1.0
 
 
 

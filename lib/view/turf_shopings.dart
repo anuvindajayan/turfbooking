@@ -9,8 +9,6 @@ class Turf_Shoppings extends StatelessWidget {
     "assets/items/boots/41kef13iuALB3.jpg",
     "assets/items/boots/41mD-Qv91ULB2.jpg",
     "assets/items/boots/71l-WvvJU2L._SY695_.jpg",
-    "assets/items/adidas_football_worldcup.png",
-    "assets/items/football_png_sixteen.png",
     "assets/items/boots/jercys/41+VgH2990L._SX679_.jpg",
     "assets/items/boots/jercys/61hYJSUe7CL._SX679_.jpg",
     "assets/items/boots/jercys/51LCL8AQ9yL._SX679_.jpg",
@@ -23,8 +21,6 @@ class Turf_Shoppings extends StatelessWidget {
     "Football Boots",
     "Football Boots",
     "Football Boots",
-    "Adidas football",
-    "Adidas football",
     "Jercy",
     "Jercy",
     "Jercy",
@@ -37,8 +33,6 @@ class Turf_Shoppings extends StatelessWidget {
     "799",
     "799",
     "799",
-    "999",
-    "999",
     "599",
     "599",
     "599",
@@ -68,7 +62,7 @@ class Turf_Shoppings extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(15),
         child: GridView.builder(
-          itemCount: 12,
+          itemCount: 10,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisSpacing: 15,
             mainAxisSpacing: 10,
