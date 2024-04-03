@@ -171,10 +171,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(backgroundColor: Colors.green,
         title: Padding(
           padding: const EdgeInsets.only(left: 16.0), // Adjust padding as needed
-          child: Text("Details"),
+          child: Text("Details",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
         ),
       ),
       body: SingleChildScrollView(
@@ -298,7 +298,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.grey[200], // Customize the background color
+                        color: Colors.green[400], // Customize the background color
                       ),
                       child: Icon(
                         Icons.remove,
@@ -323,7 +323,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.grey[200], // Customize the background color
+                        color: Colors.green[400], // Customize the background color
                       ),
                       child: Icon(
                         Icons.add,
