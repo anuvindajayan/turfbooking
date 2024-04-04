@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:turfbooking/modal/select_time_date.dart';
 import 'package:turfbooking/view/pey_now.dart';
 
-class Turf_Peyments extends StatelessWidget {
+class TurfPeymentsScreen extends StatelessWidget {
   var peyment = ["Credit card", "Debit card", "UPI", "Mobile banking"];
   var peyicon = [
     FontAwesomeIcons.creditCard,
@@ -17,7 +17,7 @@ class Turf_Peyments extends StatelessWidget {
   final int selectedIndex;
   final DateTime selectedDate;
 
-  Turf_Peyments({
+  TurfPeymentsScreen({
     required this.selectedIndex,
     required this.selectedDate,
     required this.item,

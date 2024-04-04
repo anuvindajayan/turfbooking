@@ -1,7 +1,7 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:turfbooking/modal/select_time_date.dart';
-import 'package:turfbooking/view/turf_peyment.dart';
+import 'package:turfbooking/presentation/turf_peymentscreen/view/turf_peyment_screen.dart';
 
 class Turf_Football extends StatefulWidget {
   @override
@@ -137,7 +137,7 @@ class _Turf_FootballState extends State<Turf_Football> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Turf_Peyments(
+                                builder: (context) => TurfPeymentsScreen(
                                       selectedIndex: selectedIndex,
                                       selectedDate: selectedDate,
                                       item: 'Football',
