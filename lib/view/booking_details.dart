@@ -62,6 +62,7 @@ class TurfBookingDetails extends StatelessWidget {
                           // Text("Name: Anuvind", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                           // Text("Phone: 987654321", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                           Text("Date: ${bookingDetails['selectedDate']}",
+    // ${DateFormat('dd/MM/yyyy').format(selectedDate)
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.bold)),
                           Text(

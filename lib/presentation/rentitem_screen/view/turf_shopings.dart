@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turfbooking/view/product_detail_page.dart'; // Import the details page
 
-class Turf_Shoppings extends StatelessWidget {
+class RentItemsScreen extends StatelessWidget {
   var images = [
     "assets/items/boots/41DCQQx4rCLB3.jpg",
     "assets/items/boots/41kef13iuALB3.jpg",
@@ -29,25 +29,29 @@ class Turf_Shoppings extends StatelessWidget {
     "Sockes"
   ];
   var prices = [
-    "799",
-    "799",
-    "799",
-    "799",
-    "599",
-    "599",
-    "599",
-    "599",
-    "499",
-    "299"
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
+    "49",
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_outlined)),
         title: Text(
-          "Pre book Now",
+          "Rent items",
           style: GoogleFonts.oswald(color: Colors.green),
         ),
         backgroundColor: Colors.white,
@@ -77,17 +81,18 @@ class Turf_Shoppings extends StatelessWidget {
                   ),
                 );
               },
-              child: Container(decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.01),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 5), // changes position of shadow
-                  ),
-                ],
-              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.01),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 5), // changes position of shadow
+                    ),
+                  ],
+                ),
                 child: Column(
                   children: [
                     Container(
@@ -118,7 +123,3 @@ class Turf_Shoppings extends StatelessWidget {
     );
   }
 }
-
-
-
-

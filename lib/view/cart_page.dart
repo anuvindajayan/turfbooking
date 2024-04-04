@@ -1,7 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:turfbooking/presentation/turf_shopping_screen/view/turf_shopings.dart';
+import 'package:turfbooking/presentation/rentitem_screen/view/turf_shopings.dart';
+
 
 class CartPage extends StatelessWidget {
   final String image;
@@ -55,7 +56,7 @@ class CartPage extends StatelessWidget {
                         actions: <Widget>[
                           TextButton(
                             onPressed: () {
-                             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>Turf_Shoppings()), (route) => false);
+                             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>RentItemsScreen()), (route) => false);
                             },
                             child: Text("OK"),
                           ),
