@@ -1,154 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/material.dart';
-//
-// import 'package:flutter/material.dart';
-//
-// import 'cart_page.dart';
-//
-// class ProductDetailsPage extends StatefulWidget {
-//   final String image;
-//   final String itemName;
-//   final String itemPrice;
-//
-//   ProductDetailsPage({required this.image, required this.itemName, required this.itemPrice});
-//
-//   @override
-//   _ProductDetailsPageState createState() => _ProductDetailsPageState();
-// }
-//
-// class _ProductDetailsPageState extends State<ProductDetailsPage> {
-//   String selectedSize = 'S';
-//   int quantity = 0;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Details"),
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Image(
-//             image: AssetImage(widget.image),
-//           ),
-//           SizedBox(height: 20),
-//           Text(
-//             widget.itemName,
-//             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//           ),
-//           Text(
-//             widget.itemPrice,
-//             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//           ),
-//           SizedBox(height: 20),
-//           // Size selection dropdown
-//           DropdownButton<String>(
-//             value: selectedSize,
-//             onChanged: (String? newValue) {
-//               setState(() {
-//                 selectedSize = newValue!;
-//               });
-//             },
-//             items: <String>['S', 'M', 'L', 'XL']
-//                 .map<DropdownMenuItem<String>>((String value) {
-//               return DropdownMenuItem<String>(
-//                 value: value,
-//                 child: Text(value),
-//               );
-//             }).toList(),
-//           ),
-//           SizedBox(height: 20),
-//           // Quantity input field
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               IconButton(
-//                 onPressed: () {
-//                   setState(() {
-//                     if (quantity > 0) {
-//                       quantity--;
-//                     }
-//                   });
-//                 },
-//                 icon: Icon(Icons.remove),
-//               ),
-//               Text(
-//                 '$quantity',
-//                 style: TextStyle(fontSize: 20),
-//               ),
-//               IconButton(
-//                 onPressed: () {
-//                   setState(() {
-//                     quantity++;
-//                   });
-//                 },
-//                 icon: Icon(Icons.add),
-//               ),
-//             ],
-//           ),
-//           // Add to cart button
-//           ElevatedButton(
-//             onPressed: () {
-//               if(quantity!=0){
-//               // Navigates to cart page with selected quantity details
-//               Navigator.push(
-//                 context,
-//                 MaterialPageRoute(
-//                   builder: (context) => CartPage(
-//                     itemName: widget.itemName,
-//                     itemPrice: widget.itemPrice,
-//                     selectedSize: selectedSize,
-//                     quantity: quantity,
-//                   ),
-//                 ),
-//               );}
-//             },
-//             child: Text('Add to Cart'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
-
-
-// class ProductDetailsPage extends StatelessWidget {
-//   final String image;
-//   final String itemName;
-//   final String itemPrice;
-//
-//   ProductDetailsPage({required this.image, required this.itemName, required this.itemPrice,});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Details"),
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           Image(
-//             image: AssetImage(image),
-//           ),
-//           SizedBox(height: 20),
-//           Text(
-//             itemName,
-//             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//           ),
-//           Text(
-//             itemPrice,
-//             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//           ),
-//           // Add more details or actions here as needed
-//         ],
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'cart_page.dart';
@@ -158,7 +7,8 @@ class ProductDetailsPage extends StatefulWidget {
   final String itemName;
   final String itemPrice;
 
-  ProductDetailsPage({required this.image, required this.itemName, required this.itemPrice});
+  ProductDetailsPage(
+      {required this.image, required this.itemName, required this.itemPrice});
 
   @override
   _ProductDetailsPageState createState() => _ProductDetailsPageState();
@@ -171,10 +21,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.green,
+      appBar: AppBar(
+        backgroundColor: Colors.green,
         title: Padding(
-          padding: const EdgeInsets.only(left: 16.0), // Adjust padding as needed
-          child: Text("Details",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+          padding: const EdgeInsets.only(left: 16.0),
+          // Adjust padding as needed
+          child: Text(
+            "Details",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -213,46 +68,55 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
               SizedBox(height: 20),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8), // Adjust border radius as needed
-            border: Border.all(
-              color: Colors.grey[400]!, // Specify border color
-              width: 1, // Specify border width
-            ),
-          ),
-          child: DropdownButton<String>(
-            value: selectedSize,
-            onChanged: (String? newValue) {
-              if (newValue != null) {
-                setState(() {
-                  selectedSize = newValue;
-                });
-              }
-            },
-            items: <String>['S', 'M', 'L', 'XL']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0), // Adjust padding as needed
-                  child: Text(
-                    value,
-                    style: TextStyle(fontSize: 18),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  // Adjust border radius as needed
+                  border: Border.all(
+                    color: Colors.grey[400]!, // Specify border color
+                    width: 1, // Specify border width
                   ),
                 ),
-              );
-            }).toList(),
-            isExpanded: true, // Makes the dropdown button expand to fill the available space
-            underline: Container(), // Removes the default underline
-            icon: Icon(Icons.arrow_drop_down), // Adds an icon next to the dropdown
-            iconSize: 30, // Adjust icon size as needed
-            iconEnabledColor: Colors.black, // Change icon color as needed
-            elevation: 16, // Dropdown elevation
-            style: TextStyle(fontSize: 18, color: Colors.black), // Dropdown text style
-          ),
-        ),
+                child: DropdownButton<String>(
+                  value: selectedSize,
+                  onChanged: (String? newValue) {
+                    if (newValue != null) {
+                      setState(() {
+                        selectedSize = newValue;
+                      });
+                    }
+                  },
+                  items: <String>['S', 'M', 'L', 'XL']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        // Adjust padding as needed
+                        child: Text(
+                          value,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                  isExpanded: true,
+                  // Makes the dropdown button expand to fill the available space
+                  underline: Container(),
+                  // Removes the default underline
+                  icon: Icon(Icons.arrow_drop_down),
+                  // Adds an icon next to the dropdown
+                  iconSize: 30,
+                  // Adjust icon size as needed
+                  iconEnabledColor: Colors.black,
+                  // Change icon color as needed
+                  elevation: 16,
+                  // Dropdown elevation
+                  style: TextStyle(
+                      fontSize: 18, color: Colors.black), // Dropdown text style
+                ),
+              ),
 
               SizedBox(height: 20),
               // Row(
@@ -293,12 +157,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         }
                       });
                     },
-                    borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                    borderRadius: BorderRadius.circular(20),
+                    // Adjust the border radius as needed
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.green[400], // Customize the background color
+                        color:
+                            Colors.green[400], // Customize the background color
                       ),
                       child: Icon(
                         Icons.remove,
@@ -306,24 +172,28 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 16), // Add space between the buttons and the text
+                  SizedBox(width: 16),
+                  // Add space between the buttons and the text
                   Text(
                     '$quantity',
                     style: TextStyle(fontSize: 20),
                   ),
-                  SizedBox(width: 16), // Add space between the buttons and the text
+                  SizedBox(width: 16),
+                  // Add space between the buttons and the text
                   InkWell(
                     onTap: () {
                       setState(() {
                         quantity++;
                       });
                     },
-                    borderRadius: BorderRadius.circular(20), // Adjust the border radius as needed
+                    borderRadius: BorderRadius.circular(20),
+                    // Adjust the border radius as needed
                     child: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.green[400], // Customize the background color
+                        color:
+                            Colors.green[400], // Customize the background color
                       ),
                       child: Icon(
                         Icons.add,
@@ -362,7 +232,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CartPage(image: widget.image,
+                        builder: (context) => CartPage(
+                          image: widget.image,
                           itemName: widget.itemName,
                           itemPrice: widget.itemPrice,
                           selectedSize: selectedSize,
