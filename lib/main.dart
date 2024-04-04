@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:turfbooking/controller/bottom_nav_controller.dart';
 import 'package:turfbooking/controller/password_visible.dart';
 import 'package:turfbooking/controller/tabbarcontroller.dart';
-import 'package:turfbooking/view/splash_screen/turf_splash.dart';
+import 'package:turfbooking/presentation/splash_screen/turf_splash.dart';
 
 import 'controller/peyment_controller.dart';
 

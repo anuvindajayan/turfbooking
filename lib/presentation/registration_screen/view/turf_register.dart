@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:turfbooking/controller/password_visible.dart';
-import 'package:turfbooking/view/login_and_registeration/turf_login.dart';
-import '../../modal/firebase_auth_function.dart';
+import 'package:turfbooking/presentation/loginscreen/view/turf_login.dart';
+import '../../../modal/firebase_auth_function.dart';
 
 class Turf_register extends StatefulWidget {
   @override

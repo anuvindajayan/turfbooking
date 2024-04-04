@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:turfbooking/view/bottom_nav_screen.dart';
 
-import '../login_and_registeration/turf_login.dart';
+import '../loginscreen/view/turf_login.dart';
+
 
 
 

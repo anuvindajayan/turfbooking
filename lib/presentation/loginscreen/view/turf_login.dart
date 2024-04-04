@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:turfbooking/controller/password_visible.dart';
 import 'package:turfbooking/view/bottom_nav_screen.dart';
-import 'package:turfbooking/view/login_and_registeration/turf_register.dart';
-import '../../modal/firebase_auth_function.dart';
+import 'package:turfbooking/presentation/registration_screen/view/turf_register.dart';
+import '../../../modal/firebase_auth_function.dart';
 class Log_turf extends StatefulWidget {
   @override
   State<Log_turf> createState() => _Log_turfState();
