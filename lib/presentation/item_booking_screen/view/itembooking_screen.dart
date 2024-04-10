@@ -1,14 +1,14 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:turfbooking/modal/select_time_date.dart';
+import 'package:turfbooking/respository/item_booking_screen/model/select_time_date.dart';
 import 'package:turfbooking/presentation/turf_peymentscreen/view/turf_peyment_screen.dart';
 
-class Turf_Football extends StatefulWidget {
+class ItemBookingScreen extends StatefulWidget {
   @override
-  State<Turf_Football> createState() => _Turf_FootballState();
+  State<ItemBookingScreen> createState() => _ItemBookingScreenState();
 }
 
-class _Turf_FootballState extends State<Turf_Football> {
+class _ItemBookingScreenState extends State<ItemBookingScreen> {
   var item = "football";
   var selectedDate;
   var selectedTime;

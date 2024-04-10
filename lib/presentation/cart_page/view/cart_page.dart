@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:turfbooking/presentation/rentitem_screen/view/turf_shopings.dart';
@@ -22,7 +21,8 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(automaticallyImplyLeading: false,
+
         title: Text("Cart"),
       ),
       body: ListView(
@@ -56,7 +56,7 @@ class CartPage extends StatelessWidget {
                         actions: <Widget>[
                           TextButton(
                             onPressed: () {
-                             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>RentItemsScreen()), (route) => false);
+                                Navigator.pop(context);
                             },
                             child: Text("OK"),
                           ),
