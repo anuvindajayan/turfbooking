@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:turfbooking/view/product_detail_page.dart'; // Import the details page
+import 'package:turfbooking/presentation/product_details_page/view/product_detail_page.dart'; // Import the details page
 
 class RentItemsScreen extends StatelessWidget {
   var images = [

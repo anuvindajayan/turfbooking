@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:turfbooking/view/bottom_nav_screen.dart';
+import 'package:turfbooking/presentation/bottom_nav_screen/view/bottom_nav_screen.dart';
 
 import '../loginscreen/view/turf_login.dart';
 

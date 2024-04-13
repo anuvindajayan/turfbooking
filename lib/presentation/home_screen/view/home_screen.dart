@@ -1,14 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:turfbooking/view/book_now.dart';
-import 'package:turfbooking/view/widget_refractor/Text_filed/circle_avtr.dart';
-import 'package:turfbooking/view/widget_refractor/facilities.dart';
-import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
+import 'package:turfbooking/presentation/tab_bar/view/tabbar_screen.dart';
+import 'package:turfbooking/global_widgets/circle_avtr.dart';
+import 'package:turfbooking/global_widgets/facilities.dart';
+import 'package:turfbooking/global_widgets/logo_refractor.dart';
 
-import 'mapscreen.dart';
 
-class Turf_Home2 extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   var images = [
     "assets/splash/turfimage1.jpg",
     "assets/splash/turfimage1.jpg",
@@ -93,9 +92,9 @@ class Turf_Home2 extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MapScreen()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(builder: (context) => MapScreen()));
                     },
                     icon: Icon(CupertinoIcons.location_solid)),
                 Text("Kakkanad,Ernakulam,Kerala"),
@@ -169,7 +168,7 @@ class Turf_Home2 extends StatelessWidget {
             color: Colors.green,
             onPressed: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BookingNow()));
+                  MaterialPageRoute(builder: (context) => TabbarScreen()));
             },
             child: Text(
               "Book Now",

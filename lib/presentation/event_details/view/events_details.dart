@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class Turf_Events extends StatelessWidget {
+class EventDetailsScreen extends StatelessWidget {
   final List<String> images = [
     'assets/splash/crickets.jpg',
     'assets/splash/tournaments.jpg',
@@ -27,7 +27,7 @@ class Turf_Events extends StatelessWidget {
     "assets/splash/badmintons.jpeg"
   ];
 
-  Turf_Events();
+  EventDetailsScreen();
 
   @override
   Widget build(BuildContext context) {

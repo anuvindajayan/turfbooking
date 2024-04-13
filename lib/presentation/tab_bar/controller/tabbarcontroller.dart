@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:turfbooking/view/tabbars/Football.dart';
+import 'package:turfbooking/presentation/item_booking_screen/view/itembooking_screen.dart';
 
 class TurfTabController extends ChangeNotifier {
   bool isLoading = false;
@@ -8,7 +8,7 @@ class TurfTabController extends ChangeNotifier {
   late Widget selectedIndex;
 
   var screens = [
-    Turf_Football(),Turf_Football(),Turf_Football(),Turf_Football()
+    ItemBookingScreen(),ItemBookingScreen(),ItemBookingScreen(),ItemBookingScreen()
   ];
 
   TurfTabController() {

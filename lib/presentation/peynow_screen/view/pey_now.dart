@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:turfbooking/modal/select_time_date.dart';
-import 'package:turfbooking/view/booking_details.dart';
-import 'package:turfbooking/view/widget_refractor/logo_refractor.dart';
+import 'package:turfbooking/respository/item_booking_screen/model/select_time_date.dart';
+import 'package:turfbooking/presentation/booking_details/view/booking_details.dart';
+import 'package:turfbooking/global_widgets/logo_refractor.dart';
 
 import '../controller/peyment_controller.dart';
-import 'bottom_nav_screen.dart';
+import '../../bottom_nav_screen/view/bottom_nav_screen.dart';
 
 class PeyNow extends StatelessWidget {
   final int selectedIndex;

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turfbooking/controller/bottom_nav_controller.dart';
+import 'package:turfbooking/presentation/bottom_nav_screen/controller/bottom_nav_controller.dart';
 
 class Bottom_Nav_Screen extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TurfFaq extends StatelessWidget {
+class FaqScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

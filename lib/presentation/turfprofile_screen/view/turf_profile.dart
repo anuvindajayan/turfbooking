@@ -1,20 +1,21 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:turfbooking/presentation/bookingproduct_details/view/bookingpoduct_details.dart';
 import 'package:turfbooking/presentation/loginscreen/view/turf_login.dart';
-import 'package:turfbooking/view/turf_profile/my_profile.dart';
-import 'package:turfbooking/view/turf_profile/turf_setting.dart';
-import '../../modal/firebase_auth_function.dart';
-import '../events_details.dart';
-import 'file.dart';
+import 'package:turfbooking/presentation/my_profile_screen/view/my_profile.dart';
+import 'package:turfbooking/presentation/turf_setting_screen/view/turf_setting.dart';
+import '../../../respository/Firebase_helper/firebase_helper.dart';
+import '../../event_details/view/events_details.dart';
+import '../../faq_screen/view/faq_screen.dart';
 
 class Turf_profile extends StatelessWidget {
   var titles = [
     "My Profile",
     "FAQ",
     "Settings",
-    "Rate us",
-    "Logout", // Added logout option
+    "Rent items booking details ",
+    "Logout",
   ];
   var icons = [
     Icon(
@@ -26,15 +27,15 @@ class Turf_profile extends StatelessWidget {
       color: Colors.white,
     ),
     Icon(
-      Icons.history,
-      color: Colors.white,
-    ),
-    Icon(
-      CupertinoIcons.question_circle,
-      color: Colors.white,
-    ),
-    Icon(
       Icons.settings,
+      color: Colors.white,
+    ),
+    Icon(
+      Icons.shopping_bag_outlined,
+      color: Colors.white,
+    ),
+    Icon(
+      Icons.logout,
       color: Colors.white,
     ),
     Icon(
@@ -44,9 +45,9 @@ class Turf_profile extends StatelessWidget {
   ];
   var pages = [
     My_profile(),
-    TurfFaq(),
+    FaqScreen(),
     TurfSetting(),
-    Turf_Events(),
+    BookingDetailsPage(),
   ];
 
   @override

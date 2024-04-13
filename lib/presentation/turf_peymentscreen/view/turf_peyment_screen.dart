@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:turfbooking/modal/select_time_date.dart';
-import 'package:turfbooking/view/pey_now.dart';
+import 'package:turfbooking/respository/item_booking_screen/model/select_time_date.dart';
+import 'package:turfbooking/presentation/peynow_screen/view/pey_now.dart';
 
 class TurfPeymentsScreen extends StatelessWidget {
   var peyment = ["Credit card", "Debit card", "UPI", "Mobile banking"];

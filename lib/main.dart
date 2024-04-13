@@ -1,12 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turfbooking/controller/bottom_nav_controller.dart';
-import 'package:turfbooking/controller/password_visible.dart';
-import 'package:turfbooking/controller/tabbarcontroller.dart';
+import 'package:turfbooking/presentation/bottom_nav_screen/controller/bottom_nav_controller.dart';
+import 'package:turfbooking/presentation/product_details_page/controller/product_details_controller.dart';
+import 'package:turfbooking/presentation/registration_screen/controller/password_visible.dart';
+import 'package:turfbooking/presentation/tab_bar/controller/tabbarcontroller.dart';
 import 'package:turfbooking/presentation/splash_screen/turf_splash.dart';
 
-import 'controller/peyment_controller.dart';
+import 'presentation/peynow_screen/controller/peyment_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +38,9 @@ class Myapp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => PeymentProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProductDetailsController(),
         ),
       ],
       child: MaterialApp(

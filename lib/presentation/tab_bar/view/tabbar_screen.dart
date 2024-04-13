@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turfbooking/controller/tabbarcontroller.dart';
+import 'package:turfbooking/presentation/tab_bar/controller/tabbarcontroller.dart';
 
-class BookingNow extends StatelessWidget {
+class TabbarScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TurfTabController provider = Provider.of<TurfTabController>(context);
